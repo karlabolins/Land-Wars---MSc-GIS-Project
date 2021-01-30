@@ -15,10 +15,10 @@ function initMap(){
     
     map = L.map('map').setView([0,0], 3);
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
-    id: 'mapbox.streets',
+    id: 'mapbox/streets-v11',
     accessToken: 'pk.eyJ1Ijoia2FybGFibyIsImEiOiJjang2a2g1NDEwMG5kM3BvdGx3ZTljaGl4In0.4Q8W0DhnG-S2sLgEHWER8w'
     }).addTo(map);
     
