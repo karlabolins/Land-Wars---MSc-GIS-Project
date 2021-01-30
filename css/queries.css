@@ -1,0 +1,324 @@
+/* Big tablet to 1200px (width smaller than the 1140px row) */
+@media only screen and (max-width: 1200px){
+    
+    .createacc-div, .loggedin-div{ 
+        margin-top:0px;
+    }
+
+    .leader-div{
+        margin-top:0px;
+    }       
+
+    .leader-div h3{
+        margin-bottom:0px;
+    }
+    
+    .quizmap-div button{
+        display: inline-block;
+        margin-left: 15px;
+    }
+    
+    #research_answer {
+        margin-left: 15%;
+        width: 40%;
+    }
+    
+    #map2{   
+        margin-bottom: 20px;
+    }
+    
+    .shop-div{
+        margin-top:0px;
+        padding-top: 40px;
+    }
+    
+    .gamemap-div, quizmap-div{
+        
+        padding-bottom: 50px;
+    }
+    
+     .update-div{       
+        font-size: 80%;
+    }
+    
+    .update-div p{       
+        margin-left:0;
+    }
+    
+
+}
+
+/* Small tablet to big tablet: from 768px to 1023px */
+@media only screen and (max-width: 1023px){
+    
+    body{
+        
+        font-size:150%;
+    }
+    
+    #email_field, #password_field{
+        font-size: 100%    
+    }
+    
+    .main-div button, .loggedin-div button, .createacc-div button, .gamemap-div button, .loc-div button, .feedback-div button, .gameinfo-div button, .leader-div button, .closeshopbtn, .quizmap-div button, .update-div button {
+        
+        width: 30%;
+        padding: 25px;
+        margin-top: 25px;
+        font-size: 80%;
+    }
+    
+    .main-div input, .createacc-div input {
+        
+        width: 40%;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .loggedin-div{
+        
+        font-size: 100%
+    }
+    
+    .loggedin-div button{
+        
+        margin-top:15px;
+    }
+    
+    .gameinfo-div{
+        
+        margin-top:10px;
+        font-size: 80%;
+    }
+    
+    .leader-div{
+        
+        font-size: 120%
+    }
+    
+     .leader-div button{
+        
+        font-size: 80%;
+        margin-top: 50px;
+    }
+    
+    .gamemapBtn {
+        margin: auto;
+        margin-left: 5%;
+    }   
+    
+    .gamemapBtn button{
+        display: inline-block;
+        width:20%;
+        padding:15px;
+    }
+    
+    #gamemsg, #lvlupmsg, #scoutmsg{
+        
+        font-size:75%;  
+    }
+    
+    #research_answer{
+        margin-left:20px;
+        height:70px;
+        width:40%;
+        margin-top:20px;
+        font-size: 20px;
+    }
+    
+    .quizmap-div button{
+        
+        width:23%;
+        font-size: 65%;
+        padding:15px;
+        
+    }
+    
+        .shop-div{
+        margin-top:0px;
+        padding-top: 40px;
+    }
+    
+     .gamemap-div, quizmap-div{
+        
+        padding-bottom: 50px;
+    }
+    
+    .loc-div{
+        margin-top:20px;
+    }
+    
+    .update-div{       
+        font-size: 70%;
+    }
+    
+    .update-div p{       
+        margin-left:0;
+    }
+    
+    .update-div button{
+        font-size: 120%;
+    }
+ 
+}
+
+/* Phones smaller than iPad from 481px to 767px */
+@media only screen and (max-width: 767px){
+    
+    body{
+        
+        font-size:100%;
+    }
+    
+    #map2{
+        
+        margin-bottom:0;
+    }
+    .main-div button, .loggedin-div button, .createacc-div button, .gamemap-div button, .loc-div button, .feedback-div button, .gameinfo-div button, .leader-div button, .closeshopbtn, .quizmap-div button {
+        
+        width: 50%;
+        padding: 20px;
+        margin-top: 25px;
+        font-size: 80%;
+    }
+    
+    .main-div input {
+        
+        width: 60%;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .main-div, .createacc-div, .loggedin-div, .gameinfo-div, .leader-div, .feedback-div, .shop-div, .loggedin-div, .loc-div {
+        padding:0;
+    }
+    
+    .createacc-div{
+        margin-top:15px;    
+    }
+    
+    .createacc-div button{
+        width:40%;
+        margin-top:5px;
+        margin-bottom:10px;
+        padding:15px;
+    }
+    
+    .createacc-div input{
+        width:50%;
+        height:50px;
+        margin-bottom: 10px;
+    }
+    
+    label img {
+        height: 75px;
+        width: 75px;
+        transition-duration: 0.2s;
+        transform-origin: 50% 50%;
+    }
+    
+    :checked + label {
+        border-color: #19bf26;
+        width: 75px;
+        margin: auto;
+    }
+    
+    #email_status, #char_status{
+        font-size:80%;
+        margin:0;
+    }
+    
+    .loggedin-div{
+        margin-top: 30px;
+        font-size:90%
+    }
+    
+    .loggedin-div button{
+        padding:15px;
+        margin-top:5px;
+    }
+    
+    .leader-div{
+        margin-top:10px;
+    }
+    
+    .leader-div h2{
+        margin-bottom: 0;
+    }
+    
+    .leader-div h3{
+        margin-top: 5px;
+    }
+    
+    .scoretable tr{
+        font-size:80%
+    }
+    
+    .leader-div button{
+        width:30%;
+        padding:10px;
+        margin-top:10px;
+    }
+    
+    .gameinfo-div button{
+        font-size: 100%;
+        padding:10px;
+    }
+    
+    .gamemap-div button{
+        margin-left:5px;
+        width:21%;
+        padding:10px;
+        
+    }
+    
+    .gamemap-div, quizmap-div{
+        
+        padding-bottom: 50px;
+    }
+    
+    #gamemsg, #lvlupmsg, #scoutmsg{
+        
+        font-size:75%;  
+    }
+    
+    #research_answer{
+        margin-left:10px;
+        height:30px;
+        width:50%;
+        margin-top:0px;
+        font-size: 20px;
+    }
+    
+    .quizmap-div button{
+        margin-left:0px;
+        width:20%;
+        font-size: 65%;
+        padding:15px;
+        margin-top:10px;
+        
+    }
+    
+    .shop-div{
+        margin-top:0px;
+        padding-top: 20px;
+    }
+    
+    .loc-div{
+        margin-top:20px;
+    }
+    
+    .update-div button{
+        width: 40%;
+        padding: 15px;
+    }
+    
+    .logo{
+        margin-top: -50px;
+        margin-bottom: 30px;
+    }
+    
+}
+
+/* Small devices from 288px to 480px */
+@media only screen and (max-width: 480px)

@@ -1,0 +1,341 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content ="width=device-width, initial-scale=1.0">
+    
+    <title>Land Wars: Dominion</title>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+           crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+           crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src= "js/map.js"></script>
+</head>
+<body>
+
+    <div id="login_div" class="main-div">
+        <div id="logo">
+        <img src="img/LogoMakr_5ZZMdE.png" class = "logo">
+        </div>
+        <h1>Land Wars: Dominion (Alpha 1.4)</h1>
+        <h3>Log into your account!</h3>
+    
+        <input type="email" placeholder="Email" id="email_field" />
+        <input type="password" placeholder="Password" id="password_field" />
+
+        <button onclick="login()">Login to Account</button>
+        <button onclick = "createNew()">Create a New Account</button>
+
+    </div>
+    
+        <div id="create_div" class="createacc-div">
+        <h3>Account Creation Page</h3>
+        <input type="email" placeholder="Email" id="email_field2" oninput = "delayedFunction(emailCheck); delayedFunction(emptyCheck2)" required/>
+        <p id = "email_status"></p>
+        <input type="password" placeholder="Password" id="password_field2" required/>
+        <input type="text" placeholder="Character Name" id="char_name" oninput = "delayedFunction(nameCheck); delayedFunction(emptyCheck)" required/>
+        <p id = "char_status"></p>
+        <ul style="padding: 0px;">
+            <h3 class = "textone">Choose your team!</h3>
+            <li><input type="checkbox" class = "teamSel" id="cb1" value = "Blue" onclick = "selectOnlyThis(this.id)"/>
+                <label for="cb1"><img src="img/bluelogo.png" /></label>
+            </li>
+            <li><input type="checkbox" class = "teamSel" id="cb2" value = "Red" onclick = "selectOnlyThis(this.id)"/>
+                <label for="cb2"><img src="img/redlogo.png" /></label>
+            </li>
+        </ul>
+
+        <button type = "submit" onclick = "create_account(); createDb()">Create Account</button>
+        <button onclick = "returnLogin()">Back to Login</button>
+
+    </div>
+
+    <div id="user_div" class="loggedin-div">
+        <h3 id = "welcomePlayer"></h3>
+        <p id="user_para"></p>
+        <div>
+            <ul style="padding: 0px;">
+                <li id = 'charnameID'></li>
+                <li id = 'teamID'></li>
+                <li id = 'levelID'></li>
+                <li id = 'strID'></li>
+                <li id = 'expID'></li>
+                <li id = 'goldID'></li>
+            </ul>
+        </div>
+        <button id= "verify_btn" onclick = "send_verification()">Send Verification</button>      
+        <button id="game_start" onclick = "startGame();">Play Game!</button>
+        <button id="game_info" onclick = "openGameInfo();">Instructions</button>
+        <button onclick="leaderBoard();" id = "leaderboard">Leaderboard</button>
+        <button onclick="openFeedback();" id = "feedbackBtn">Feedback</button>
+        <button onclick="openUpdate();" id = "updateBtn">Update log</button>
+        <button onclick="logout()">Logout</button>
+
+        
+    </div>
+    
+    <div id = "locSelect" class = "loc-div">
+        
+        <p>Note: This game is meant to be played on a phone or tablet. Using google chrome is also recommended. Please also ensure that connection to the website is secure (https). Map could take awhile to load depending on location.</p>
+        <p>Important: Please only use the in-game buttons to navigate and avoid using the return/back button on your device. Doing so will require you to reload the map! </p>
+        <button onclick = locManchester();> Manchester </button>
+        <button onclick = locStockport();> Stockport </button>
+        <button onclick = locStratford();> Stratford </button>
+        <button onclick = locAberdeen();> Aberdeen </button>
+        <button onclick = locKL();> Kuala Lumpur </button>
+        <button onclick = locPJ();> Petaling Jaya </button>
+        <button onclick = locSubang();> Subang Jaya </button>
+        <button onclick = locBangsar();> Bangsar </button>
+        <button onclick = locPuchong();> Puchong </button>
+        <button onclick = locTd();> Taman Desa </button>
+        <button onclick = locMiri();> Miri </button>
+    
+    </div>
+    
+    <div id = "gameInfo" class = "gameinfo-div">
+        <h2><u>About The Game</u></h2>
+        <p>This game was created as part of a MSc GIS design project from the University of Manchester, UK. The purpose of this game is to evaluate the effectiveness of using Location-Based Games as a tool for crowdsourcing validated land cover information. Global land cover has been identified as one of the fundamental variables needed in order to study the functional and morphological changes that occur in the Earth’s ecosystems and the environment including carbon circulation and climate change. Due to a large amount of inconsistencies and uncertainties with current land cover datasets, some sort of validation processes is required to make accurate predictions on existing land cover datasets and improve faulty classifications. </p>
+        
+        <h2><u>How to play</u></h2>
+        <p>Once the game starts, a marker will appear on the map which represents your current location. The objective of the game is simple which is to walk around and capture tiles! Although it sounds simple, it is not that easy especially for a character with low level and strength. Hence, you must first strengthen your character by performing land surveys of the area which will reward you with gold and experience points.</p>
+        
+        <h2><u>Surveying</u></h2>
+        <p>Clicking on the 'Survey' button will trigger a series of random satellite images to appear. These are images of a location near your area, so you may see your house appear! Inside the input box, you have to select the option which most accurately represents the type of land seen within the blue square. Honesty when inputting your answers is very much appreciated! You may complete as many surveys as you like and the more you complete, the more rewards you will earn in the form of experience and gold. So spend some time doing surveys before you go begin capturing tiles or you will find it difficult to capture them! </p>
+        
+        <h2><u>Capturing </u></h2>
+        <p> Your chance of success in capturing an area depends largely on your level and strength. You gain a level every time your experience reaches 100%. Strength is gained by travelling. You will gain 1 strength for every 25 meters travelled. The zones are either controlled by the blue team, red team, or they can be neutral. The neutral zones are easier to capture and the zones controlled by the opposing team will be much tougher. You will be rewarded handsomely for every tile you capture and even more for every enemy tile captured. So if you like your chances of capturing a zone, click on the 'Capture' button! Be warned, losing will result in a loss of gold and strength. So be very certain before you click the capture button!</p>
+        
+        <h2><u>Scouting</u></h2>
+        <p>As mentioned previously, your percentage of success depends entirely on your level and strength. The maximum amount of strength you can have is 100 and there is no limit on the level for now. Clicking on the 'Scout' button will show you your approximate percentage of success in capturing the tile you are on.</p>
+        
+        <h2><u>Shop</u></h2>
+        <p>Have a lot of gold? Well, good news then! You can purchase Potion of Strength to boost your strength and Scroll of Wisdom to increase your level. However, you will only have access to shops when you are in an area which is controlled by your team.</p>
+        
+        <h2><u>Log out!</u></h2>
+        <p>Please remember to log out after playing as it will provide me with information which is valuable towards my research. Also, logging out will save your current distance progress. Meaning if you have walked 40m and logged out, you will only have to walk 10m when you log in again to gain 1 strength. Otherwise, your distance will start again from 0.</p>
+        
+        <h2><u>Feedback</u></h2>
+        <p>If you could spare some time, please do provide feedback in the main menu of the game. All feedback is valuable and will be incredibly helpful towards my dissertation. </p>
+        
+        <h2><u>Have Fun!</u></h2>
+        <p>I hope you enjoy playing the game as much as I enjoyed creating it! Please be aware of your surroundings at all times and do not play the game in an unsafe environment. All the best and have fun!</p>
+        
+        <button onclick = "returnFromInfo();"> Return </button>
+    </div>
+    
+    <div id = "leadBoard" class = "leader-div">
+        <h2>Leaderboard</h2>
+        <h3><u>Level</u></h3>
+        <Table class = "scoretable">
+            <tr>
+                <th>Character Name</th>
+                <th>Level</th>
+            </tr>
+            <tr class = "goldclass">
+                <td id = "lb1"></td>
+                <td id = "lbl1"></td>
+            </tr>           
+            <tr>
+                <td id = "lb2"></td>
+                <td id = "lbl2"></td>
+            </tr>
+            <tr>
+                <td id = "lb3"></td>
+                <td id = "lbl3"></td>
+            </tr>
+            <tr>
+                <td id = "lb4"></td>
+                <td id = "lbl4"></td>
+            </tr>            
+            <tr>
+                <td id = "lb5"></td>
+                <td id = "lbl5"></td>
+            </tr>
+        </Table>
+        <h3><u>Land captures</u></h3>
+        
+            <Table class = "scoretable">
+                <tr>
+                    <th>Character Name</th>
+                    <th>Captures</th>
+                </tr>
+                <tr class = "goldclass">
+                    <td id = "cap1"></td>
+                    <td id = "capl1"></td>
+                </tr>           
+                <tr>
+                    <td id = "cap2"></td>
+                    <td id = "capl2"></td>
+                </tr>
+                <tr>
+                    <td id = "cap3"></td>
+                    <td id = "capl3"></td>
+                </tr>
+                <tr>
+                    <td id = "cap4"></td>
+                    <td id = "capl4"></td>
+                </tr>            
+                <tr>
+                    <td id = "cap5"></td>
+                    <td id = "capl5"></td>
+            </tr>
+            </Table> 
+            
+            <h3><u>Surveys completed</u></h3>
+        
+            <Table class = "scoretable">
+                <tr>
+                    <th>Character Name</th>
+                    <th>Surveys</th>
+                </tr>
+                <tr class = "goldclass">
+                    <td id = "ans1"></td>
+                    <td id = "ansl1"></td>
+                </tr>           
+                <tr>
+                    <td id = "ans2"></td>
+                    <td id = "ansl2"></td>
+                </tr>
+                <tr>
+                    <td id = "ans3"></td>
+                    <td id = "ansl3"></td>
+                </tr>
+                <tr>
+                    <td id = "ans4"></td>
+                    <td id = "ansl4"></td>
+                </tr>            
+                <tr>
+                    <td id = "ans5"></td>
+                    <td id = "ansl5"></td>
+            </tr>
+            </Table>
+   
+        <button onclick= "returnFromLb();">Return</button>
+    </div>
+    
+    <div id = "feedbackForm" class = "feedback-div">
+        <h3>Your feedback is highly appreciated!</h3>
+        <input type = "text" id = "feedbackInput" placeholder="Enter feedback here">
+        <button type = "submit" onclick = "submitFeedback();"> Submit</button>
+        <button onclick = "returnFromFb();"> Return </button>
+    </div>
+    
+    <div id = "gamemap" class = "gamemap-div">
+        <div id='map'></div>
+        <div id='gamemsg'></div>
+        <div id= 'lvlupmsg'></div>
+        <div id= 'scoutmsg'></div>
+        <div id = 'msg'></div>
+        <div id = 'marker'></div>
+        <div id = 'totDist'></div>
+        <div id = 'distest'></div>
+        <div id = 'strchange'></div>
+        
+        <div class = "gamemapBtn">
+            <button id= "mainbtn" onclick = "mainMenu();">Menu</button>
+            <button id= "surveybtn" onclick = "questionsStart();">Survey</button>
+            <button id= "scoutbtn" onclick = "displayChance();">Scout</button>
+            <button id = 'capturebtn' onclick = "captureTile();">Capture</button>
+            <button id = 'shopbtn' onclick = "openShop();">Shop</button>
+
+        </div>
+    </div>
+    <div id = "quizmap" class = "quizmap-div">
+        
+        <div id = 'map2'></div>
+        <div id = 'map2msg'></div>
+<!--        <input type="text" placeholder="Enter land type" id="research_answer" />-->
+          <select name="answers" id="research_answer" placeholder = "Select most suitable answer" >
+            <option value="empty"></option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+            <option value="industrial">Industrial</option>
+            <option value="urban_greenspace">Urban Greenspace</option>
+            <option value="water">Water</option>
+            <option value="grassland">Grassland</option>
+            <option value="forest">Forest</option>
+            <option value="bareland">Barren</option>
+            <option value="wetland">Wetlands</option>
+            <option value="cropland">Cropland</option>
+            <option value="other">Other</option>
+          </select>
+        <button id = "submitansbtn"type = "submit" onclick = "submitAnswer();"> Submit Answer</button>
+        <button id="returngamebtn2" onclick = "returnGame();">Return</button>
+    
+    </div>
+    
+    <div id = "shopmenu" class = "shop-div">
+        
+        <button onclick = "buyPotion();" class = 'shopicons'><img src="css/img/strpot.png"></button>
+        <div id="potmsg"></div>
+        <p>Potion of Strength</p>
+        <p>Increases your strength by 10.</p>
+        <p>Price: 100 gold</p>
+            
+        <button onclick = "buyScroll();" class = 'shopicons'><img src="css/img/scroll2.png" ></button>
+        <div id="scrollmsg"></div>
+        <p>Scroll of Wisdom</p>
+        <p>Increases your level by 1.</p>
+        <p>Price: 500 gold</p>
+    
+        <button id="returngamebtn" class = "closeshopbtn" onclick = "closeShop();">Return</button>
+    
+    </div>
+    
+    <div id = "updatelog" class = "update-div">
+        
+        <p><u>Patch 1.0</u></p>
+        <p>-Initial release.</p>
+        
+        <p><u>Patch 1.1</u></p>
+        <p>-Reduced the size of tiles to increase loading speeds</p>
+        <p>-Reduced the play area size of Kuala Lumpur, Petaling Jaya and Subang.</p>
+        <p>-Fixed an issue where the capture button would appear for those outside the play zone.</p>
+        
+        <p><u>Patch 1.2</u></p>
+        <p>-Made changes to the user interface.</p>
+        <p>-Added messages to remind players to use a secure link (https) and other several other recommendations.</p>
+        <p>-Players will no longer input the land survey answers manually. A drop down menu with pre-defined answers was added.</p>
+        
+        <p><u>Patch 1.3</u></p>
+        <p>-Made adjustments to the size of play area for all zones to reduce loading time.</p>
+        <p>-Added more land cover classification choices.</p>
+        <p>-Fixed a bug which allowed players to spam the submit button while doing surveys.</p>
+        <p>-The 'scout' button will no longer appear if the player is not within the play zone.</p>
+        <p>-A message will now appear if the player is not within the play zone.</p>
+        
+        <p><u>Patch 1.4</u></p>
+        <p>-Added the update log.</p>
+        <p>-Increased the amount of experience rewarded from completing surveys.</p>
+        <p>-Decreased the difficulty of capturing tiles.</p>
+        <p>-Fixed a bug where two squares would appear while doing a survey.</p>
+        <p>-Added Stockport and Aberdeen to the list of playable locations.</p>
+        <p>-Slightly adjusted the size of the play area in some zones.</p>
+        <p>-Added "Most surveys completed" category to the leaderboard.</p>
+        <p>-"Survey complete" message will no longer appear if players do not submit any surveys.</p>
+        
+    <button onclick = "returnFromUpdate();">Return</button>
+    </div>
+    
+    
+</body>
+</html>

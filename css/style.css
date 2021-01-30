@@ -1,0 +1,272 @@
+body {
+    background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.85)), to(rgba(0, 0, 0, 0.7))),url(img/orcbackground.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-position: 50% 30%;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    overflow-x: hidden;
+    color:#ffffff;
+}
+
+
+#map, #map2 { 
+    height: 80%;
+    width: 100%;
+}
+
+.main-div{
+    color:#ffffff;
+}
+
+#msg, #marker, #totDist, #distest, #strchange, #shopbtn, #capturebtn{
+    
+    display: none;
+    color:black;
+}
+
+#totDist, #strchange{
+    
+    display: block;
+    color:black;
+    
+}
+
+input, button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.main-div, .loggedin-div,  .createacc-div, .loc-div, .shop-div, .leader-div, .feedback-div, .gameinfo-div, .update-div {
+    width: 100%;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    display: none;
+    text-align: center;
+} 
+
+.gamemap-div, .quizmap-div, .shop-div{
+    display:none;
+    background:white;
+    height:100%;
+}
+
+.main-div input, .createacc-div input {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    width: 20%;
+    margin: auto;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+
+.main-div input:focus, .createacc-div input:focus{
+  border: 1px solid #777;
+}
+
+.main-div button, .loggedin-div button, .createacc-div button, .gamemap-div button, .loc-div button, .feedback-div button, .gameinfo-div button, .leader-div button, .closeshopbtn, .quizmap-div button, .update-div button {
+    background: #5d8ffc;
+    color: #fff;
+    border: 1px solid #5d8ffc;
+    border-radius: 5px;
+    padding: 15px;
+    display: block;
+    width: 15%;
+    margin: auto;
+    margin-bottom: 15px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+
+.gamemap-div button{
+    width: 15%;
+    margin-left: 20px;
+    margin-top:15px;
+    display: inline-block;
+}
+
+.gamemapBtn{
+    
+    margin:auto;
+    margin-left: 20%;
+    
+}
+
+.scoretable{
+    
+    margin:auto;
+    
+}
+.main-div button:hover, .loggedin-div button:hover, .createacc-div button:hover, .gamemap-div button:hover, .loc-div button:hover, .feedback-div button:hover, .gameinfo-div button:hover, .leader-div button:hover, .shop-div button:hover, .quizmap-div button:hover, .update-div button:hover {
+      background: #fff;
+      color: #5d8ffc;
+      border: 1px solid #5d8ffc;
+      cursor: pointer;
+}
+
+#feedbackInput{
+    
+    margin-bottom: 15px;
+    
+}
+#game_start{
+    background-color: #23f211;
+}
+
+.gameinfo-div p, .gameinfo-div h2{
+    
+    width: 60%;
+    margin: auto;
+    margin-bottom: 5px;
+    text-align: justify;
+    
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+li {
+  display: block;
+}
+
+input[type="checkbox"][id^="cb"] {
+  display: none;
+}
+
+label {
+  border: 1px solid rgba(255, 255, 255, 0);
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+label img {
+  height: 100px;
+  width: 100px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked + label {
+    border-color: #19bf26;
+    width: 100px;
+    margin: auto;
+}
+
+:checked + label:before {
+  content: "";
+  background-color: grey;
+  transform: scale(1);
+}
+
+:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+}
+
+.shop-div img{
+    
+    width: 125px;
+    height: 125px;
+    
+}
+
+.shop-div{  
+    color:black; 
+    margin-top:0;
+}
+
+.shopicons {   
+    width: 150px;
+    height: 150px;
+    background: black;
+    color: #fff;
+    border: 1px solid #5d8ffc;
+    border-radius: 5px;
+    padding: 15px;
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+
+
+#feedbackInput{
+    
+    height:200px;
+    width: 300px;
+}
+
+td, th {
+  text-align: center;
+  padding: 10px;
+}
+
+#research_answer{
+    width:20%;
+    height:40px;
+    margin-left: 40%;
+    margin-bottom: 10px;
+}
+
+.goldclass{
+    color: gold;
+    font-weight: 700;
+}
+
+#capturebtn{
+    background-color: #ff6c00;
+}
+
+#scoutbtn{
+    background-color: #004eff;
+}
+
+#surveybtn, #submitansbtn{
+    background-color: #15b200;
+}
+
+#mainbtn, #returngamebtn, #returngamebtn2{
+    background-color: #151515;
+}
+
+#shopbtn{
+    background-color: #ff6c00;
+}
+.logo {
+    height: 100px;
+    width: auto;
+
+}
+
+.update-div{
+    
+    margin: auto;
+    width: 60%;
+    
+}
+
+.update-div p{
+    text-align:left;
+    font-size: 120%;
+    margin-left: 20%;
+}
