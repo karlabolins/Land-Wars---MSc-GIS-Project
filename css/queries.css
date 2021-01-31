@@ -32,7 +32,7 @@
         padding-top: 40px;
     }
     
-    .gamemap-div, quizmap-div{
+    .quizmap-div{
         
         padding-bottom: 50px;
     }
@@ -139,7 +139,7 @@
         padding-top: 40px;
     }
     
-     .gamemap-div, quizmap-div{
+     .quizmap-div{
         
         padding-bottom: 50px;
     }
@@ -272,7 +272,7 @@
         
     }
     
-    .gamemap-div, quizmap-div{
+    .quizmap-div{
         
         padding-bottom: 50px;
     }
@@ -321,4 +321,4 @@
 }
 
 /* Small devices from 288px to 480px */
-@media only screen and (max-width: 480px)
+@media only screen and (max-width: 480px){}
