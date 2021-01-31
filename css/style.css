@@ -29,9 +29,10 @@ body {
 }
 
 #totDist, #strchange{
-    
+    background: white;
     display: block;
     color:black;
+    border:white;
     
 }
 
@@ -98,10 +99,9 @@ input, button {
 }
 
 .gamemapBtn{
-    background-image: none;
+    background:white;
     margin:auto;
-    margin-left: 20%;
-    
+    padding-left: 10%;
 }
 
 .scoretable{
@@ -226,6 +226,7 @@ td, th {
     height:40px;
     margin-left: 40%;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .goldclass{
